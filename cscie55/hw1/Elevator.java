@@ -1,7 +1,7 @@
 public class Elevator
 {
 	//Total number of floors in building
-	public static final int numFloors = 7;
+	public final int NUM_FLOORS = 7;
 
 	//Member variables
 	private int _currentFloor;
@@ -11,11 +11,11 @@ public class Elevator
 	private int _numPassengers = 0;
 
 	//Destinations[i-1] is number of people getting off at i-th floor
-	private int [] _destinations = new int[numFloors+1];
+	private int [] _destinations = new int[NUM_FLOORS+1];
 
 	//stopFloors[i-1] = 1 means someone is getting off on i-th floor
 	//stopFloors[i-1]=0 means no one is getting off on the i-th floor
-	private boolean [] _stopFloors = new boolean[numFloors+1];
+	private boolean [] _stopFloors = new boolean[NUM_FLOORS+1];
 
 	public Elevator()
 	{
@@ -23,7 +23,7 @@ public class Elevator
 		_currentFloor = 1;
 
 		//Initialize destinations and stopFloor arrays to 0
-		for(int i=1; i<=numFloors; i++)
+		for(int i=1; i<=NUM_FLOORS; i++)
 		{
 			_destinations[i]=0;
 			_stopFloors[i]=false;
@@ -44,7 +44,7 @@ public class Elevator
 		}
 
 		//If reached first or last floor, reverse direction
-		if(_currentFloor==numFloors || _currentFloor==1)
+		if(_currentFloor==NUM_FLOORS || _currentFloor==1)
 		{
 			_direction = -_direction;
 		}
@@ -53,9 +53,9 @@ public class Elevator
 	public void boardPassenger(int floor)
 	{
 		//Throw error if floor is invalid
-		if(floor<1 || floor>numFloors)
+		if(floor<1 || floor>NUM_FLOORS)
 		{
-			String errorString = "Floor can only be between 1 and " + Integer.toString(numFloors);
+			String errorString = "Floor can only be between 1 and " + Integer.toString(NUM_FLOORS);
 			throw new IllegalArgumentException(errorString);
 		}
 
@@ -117,9 +117,9 @@ public class Elevator
 	//Setters
 	public void setCurrentFloor(int floor)
 	{
-		if(floor<1 || floor>numFloors)
+		if(floor<1 || floor>NUM_FLOORS)
 		{
-			String errorString = "Floor can only be between 1 and " + Integer.toString(numFloors);
+			String errorString = "Floor can only be between 1 and " + Integer.toString(NUM_FLOORS);
 			throw new IllegalArgumentException(errorString);
 		}
 		_currentFloor = floor;
@@ -163,7 +163,7 @@ public class Elevator
 		int down = -1;
 
 
-		int numFloors = elev.numFloors;
+		int numFloors = elev.NUM_FLOORS;
 
 		int counter = 1;
 
@@ -178,7 +178,7 @@ public class Elevator
 		//Print state of the elevator before moving
 		System.out.println(elev.toString());
 
-		
+
 		//Move elevator to top
 
 		elev.setDirection(up);
